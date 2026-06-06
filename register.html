@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rejestracja - BAZA</title>
+  </head>
+  <body>
+    <h1>REJESTRACJA</h1>
+
+    <form id="registerForm">
+      <div>
+        <label for="imie">Imię:</label>
+        <input type="text" id="imie" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="nazwisko">Nazwisko:</label>
+        <input type="text" id="nazwisko" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" required />
+        <strong id="errorMail" hidden> - Wprowadź poprawny adres e-mail!</strong>
+      </div>
+      <br />
+
+      <div>
+        <label for="haslo">Hasło:</label>
+        <input type="password" id="haslo" required />
+        <strong id="errorHaslo" hidden> - Min. 8 znaków, 1 wielka litera, 1 cyfra!</strong>
+      </div>
+      <br />
+
+      <div>
+        <label for="dataUrodzenia">Data urodzenia:</label>
+        <input type="date" id="dataUrodzenia" required />
+      </div>
+      <br />
+
+      <div>
+        <label for="kraj">Kraj:</label>
+        <select id="kraj" required>
+          <option value="" disabled selected>Wybierz kraj...</option>
+        </select>
+      </div>
+      <br />
+
+      <div>
+        <label>Płeć:</label>
+        <input type="radio" id="plecKobieta" name="plec" value="Kobieta" required />
+        <label for="plecKobieta">Kobieta</label>
+
+        <input type="radio" id="plecMezczyzna" name="plec" value="Mężczyzna" />
+        <label for="plecMezczyzna">Mężczyzna</label>
+      </div>
+      <br />
+
+      <div>
+        <button type="submit">Zarejestruj</button>
+      </div>
+
+      <p id="komunikatGlowny"></p>
+    </form>
+
+    <script src="./js/register.js"></script>
+  </body>
+</html>

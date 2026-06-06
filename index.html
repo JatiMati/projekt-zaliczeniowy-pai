@@ -1,12 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/style.css" />
+    <title>Formularz Logowania</title>
   </head>
   <body>
-    <h1>Hello World!</h1>
+    <h1>BAZA</h1>
+
+    <div id="loginForm">
+      <form action="#" method="POST">
+        <div>
+          <label for="login">Login</label>
+          <input type="text" id="login" name="login" />
+        </div>
+
+        <div>
+          <label for="haslo">Haslo</label>
+          <input type="password" id="haslo" name="haslo" />
+        </div>
+
+        <div>
+          <button type="submit">Login</button>
+        </div>
+      </form>
+
+      <div>
+        <button type="button"><a href="./register.html">Register</a></button>
+      </div>
+      <h1 id="komunikat">AA</h1>
+    </div>
+    <script src="./js/login.js"></script>
   </body>
 </html>
