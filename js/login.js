@@ -38,7 +38,7 @@ form.addEventListener("submit", function (event) {
         // Przekierowanie na strony wyszukiwarki w bazie.
         window.location.href = "base.html";
       } else {
-        komunikat.style.color = "red";
+        komunikat.style.visibility = "visible";
         komunikat.textContent = "Błędny login lub hasło!";
       }
     })

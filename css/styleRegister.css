@@ -27,7 +27,7 @@
   background-color: var(--tlo);
 }
 .tlo-kolorowe {
-  background-color: var(--kolor-drugi);
+  background-color: var(--tlo-na-gorze);
 }
 .green {
   background-color: var(--kolor-drugi);
@@ -103,14 +103,8 @@ i {
   padding: 40px; /* Odstęp wewnątrz prostokąta, żeby tekst nie dotykał krawędzi */
   border-radius: 23px; /* Lekkie zaokrąglenie rogów (sprawdź w Figmie, jaką masz tam wartość) */
 
-  /* Rozmiary */
   width: 100%;
   max-width: 400px; /* Nie pozwalamy mu się rozciągnąć na całą szerokość ekranu */
-}
-
-/* 2. Wygląd Twojego prostokąta */
-.prostokat-login {
-  background-color: var(--kolor-drugi);
 }
 
 .prostokat-register {
@@ -225,28 +219,25 @@ button {
 .btn-login {
   /* Wypycha ten konkretny element do prawej krawędzi */
 
-  width: 100px;
+  width: 200px;
   color: var(--text);
-  background-color: var(--kolor-drugi);
+  background-color: var(--tlo-na-gorze);
   margin-top: 20px;
   text-align: center;
 }
 .btn-register {
-  text-decoration: none;
-  margin-top: 30px;
-  width: 150px;
-  height: 100%;
-  background-color: var(--tlo-na-gorze);
-  text-align: center;
-  justify-content: center;
-}
-.btn-register {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: var(--text);
-  width: 200px;
+  width: 170px;
   height: 30px;
+  margin-top: 30px;
+
+  background-color: var(--kolor-drugi);
+  color: var(--text);
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 a {
   text-decoration: none;
@@ -254,11 +245,11 @@ a {
 
 /* Efekt po najechaniu myszką na przycisk */
 .btn-login:hover {
-  background-color: var(--kolor-drugi);
-  color: var(--kolor-drugi);
+  background-color: var(--tlo-na-gorze);
+  color: var(--text);
 }
 .btn-register:hover {
-  background-color: var(--tlo-na-gorze);
+  background-color: var(--kolor-drugi);
   color: var(--text);
 }
 
@@ -266,7 +257,98 @@ a {
 #loginForm > div:last-of-type {
   margin-top: 16px;
 }
+
+/* Edycja rozwijanej listy */
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* 2. Dodajemy własną strzałkę jako tło (z użyciem SVG zakodowanego w linku) */
+  background-image: url("../img/angles-down-solid-full-white.svg");
+  background-repeat: no-repeat;
+  background-color: var(--text);
+  border: none;
+
+  /* Ustawiamy strzałkę po prawej stronie */
+  background-position: right 15px top 50%;
+  background-size: 12px auto;
+
+  cursor: pointer;
+  padding: 12px 16px;
+  /* Upewnij się, że tekst nie wejdzie na strzałkę */
+
+  height: 45px;
+  width: 200px;
+  color: var(--text);
+}
+
+/* Opcjonalnie: Zmiana koloru opcji po rozwinięciu listy */
+select option {
+  background-color: var(--text); /* lub Twój kolor tła */
+  color: var(--tlo);
+  border: none;
+}
+select:focus {
+  /* Usuwa domyślną "świecącą" ramkę przeglądarki */
+  outline: none;
+}
+/* 1. Rysujemy zewnętrzny, pusty okrąg */
+/* 1. Domyślny wygląd (czyli stan unpressed) */
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+
+  /* Standardowa ramka dla nieaktywnego elementu */
+  border-radius: 45%;
+  /* background-color: transparent; */
+
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  /* transform: translateY(4px); */
+
+  /* Płynne przejście przy dodawaniu klasy pressed */
+  transition: all 0.2s ease;
+}
+.radio-options {
+  display: flex;
+
+  /* 1. To słowo klucz: wyłącza rozpychanie i ustawia elementy blisko siebie od lewej */
+  justify-content: flex-start;
+
+  align-items: center;
+
+  /* 2. To ustala idealną, sztywną przerwę (8px) między kółkiem a napisem "Kobieta/Mężczyzna" */
+  gap: 8px;
+}
+
+/* 3. Żeby napis "Kobieta" nie zlewał się z kółkiem od "Mężczyzny", dodajemy margines */
+.radio-options label {
+  margin-right: 24px;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  /* Robimy systemową ikonkę niewidzialną (ale wciąż można w nią kliknąć!) */
+  opacity: 0;
+}
+
+input[type="date"] {
+  /* Dodajemy własną ikonę (np. plik pobrany z FontAwesome) */
+  background-image: url("../img/calendar-solid-full-white.svg");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 16px;
+}
 form .submit-container {
   /* Nadpisujemy wcześniejsze space-between */
   justify-content: center;
+}
+form button[type="submit"] {
+  /* Magicznie środkuje element we Flexboxie */
+  margin: 30px auto 50px auto;
 }

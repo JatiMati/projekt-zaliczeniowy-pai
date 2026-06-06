@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --tlo: #252422;
+  --tlo-wewnatrz: #c34f23;
+  --tlo-na-gorze: #eb5e28;
+  --kolor-drugi: #34a872;
+  --szary: #403d39;
+  --kremowy: #ccc5b9;
+  --text: #fffcf2;
+  --cien-ciemny: rgba(0, 0, 0, 0.28);
+  --cien-jasny: rgba(255, 255, 255, 0.2);
+}
+.text-font-basic {
+  font-family: "Anonymous Pro", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+.tlo-ciemne {
+  background-color: var(--tlo);
+}
+.tlo-kolorowe {
+  background-color: var(--text);
+}
+.green {
+  background-color: var(--kolor-drugi);
+}
+
+.orange {
+  background-color: var(--tlo-na-gorze);
+}
+.cream {
+  background-color: var(--kremowy);
+}
+.white {
+  background-color: var(--text);
+}
+.grey {
+  background-color: var(--szary);
+}
+.jasne {
+  color: var(--tlo);
+}
+.ciemne {
+  color: var(--text);
+}
+.fa-regular {
+  color: var(--tlo);
+  transform: rotateZ(-180deg);
+}
+.fa-solid {
+  color: var(--text);
+}
+.prostokat-baza {
+  margin: 100px auto 0 auto; /* Użyj auto z lewej/prawej, żeby wyśrodkować cały blok */
+  width: 90%; /* Zmień ze 100% na 90%, żeby nie "dotykał" krawędzi ekranu */
+  max-width: 1300px;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  background-color: #eeebe2;
+  box-sizing: border-box;
+  border-radius: 20px; /* Dodaj zaokrąglenie, jeśli chcesz */
+}
+
+.prostokat-wewnatrz {
+  width: 90%;
+  max-width: 1600px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  margin: 0;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.search-bar label {
+  margin: 0;
+  color: var(--tlo);
+}
+
+.search-bar input {
+  width: 250px;
+  margin: 0;
+  color: var(--text);
+}
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.btn-login{
+  width: 150px;
+  display: none;
+}
+.search-bar input,
+.search-bar button {
+  margin: 0;
+}
+.users-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px; 
+  align-content: start; 
+  flex-grow: 1;
+  background-color: var(--szary);
+  border-radius: 23px; /* Poprawiłem literówkę z '23x' na '23px' */
+  padding: 20px; /* Zmniejszyłem z 50px */
+  overflow-y: auto;
+  width: 100%; 
+  box-sizing: border-box;
+}
+
+.user-card {
+  width: 100%;
+  background-color: var(--tlo); /* Zmień na tło ciemne, żeby odróżnić od kontenera */
+  color: var(--text);
+  margin: 0; /* USUNIĘTO margin: 20px - teraz grid i gap zajmą się odstępami */
+  padding: 20px;
+  border-radius: 15px;
+  box-sizing: border-box; /* Ważne, żeby padding nie wychodził poza kartę */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.user-card h3 {
+  margin: 0;
+  color: var(--text);
+  font-size: 20px;
+  padding-bottom: 10px;
+}
+.user-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.user-card p strong {
+  color: rgba(255, 255, 255, 0.6);/
+}

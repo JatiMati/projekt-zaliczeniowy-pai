@@ -4,68 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rejestracja - BAZA</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/styleRegister.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Bitcount+Grid+Double:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>REJESTRACJA</h1>
+  <body class="text-font-basic tlo-ciemne">
+    <nav>
+      <h1 id="logo" class="bitcount-grid-double-logo">BAZA</h1>
+      <i id="themeToggle" class="fa-solid fa-moon moon"></i>
+    </nav>
 
-    <form id="registerForm">
-      <div>
-        <label for="imie">Imię:</label>
-        <input type="text" id="imie" required />
+    <main class="prostokat prostokat-register pressed">
+      <div id="registerContainer">
+        <form id="registerForm">
+          <div>
+            <label class="label-register" for="imie">Imię:</label>
+            <input class="orange" type="text" id="imie" required />
+          </div>
+
+          <div>
+            <label class="label-register" for="nazwisko">Nazwisko:</label>
+            <input class="orange" type="text" id="nazwisko" required />
+          </div>
+
+          <div>
+            <label class="label-register" for="mail">E-mail:</label>
+            <input class="orange" type="email" id="mail" required />
+            <strong id="errorMail" hidden> - Wprowadź poprawny adres e-mail!</strong>
+          </div>
+
+          <div>
+            <label class="label-register" for="haslo">Hasło:</label>
+            <input class="orange" type="password" id="haslo" required />
+            <strong id="errorHaslo" hidden> - Min. 8 znaków, 1 wielka litera, 1 cyfra!</strong>
+          </div>
+
+          <div>
+            <label class="label-register" for="dataUrodzenia">Data urodzenia:</label>
+            <input class="orange" type="date" id="dataUrodzenia" required />
+          </div>
+
+          <div>
+            <label class="label-register" for="kraj">Kraj:</label>
+            <select class="orange" id="kraj" required>
+              <option value="" disabled selected>Wybierz kraj...</option>
+            </select>
+          </div>
+
+          <div class="radio-group">
+            <label class="label-register">Płeć:</label>
+            <div class="radio-options">
+              <input type="radio" id="plecKobieta" name="plec" value="Kobieta" required />
+              <label for="plecKobieta">Kobieta</label>
+
+              <input type="radio" id="plecMezczyzna" name="plec" value="Mężczyzna" />
+              <label for="plecMezczyzna">Mężczyzna</label>
+            </div>
+          </div>
+
+          <div class="submit-container">
+            <button class="btn-login text-font-basic" type="submit">Zarejestruj</button>
+          </div>
+
+          <p id="komunikatGlowny"></p>
+        </form>
+
+        <div class="flex-register">
+          <a href="./index.html"><button class="btn-register text-font-basic" type="button">Wróć do logowania</button></a>
+        </div>
       </div>
-      <br />
-
-      <div>
-        <label for="nazwisko">Nazwisko:</label>
-        <input type="text" id="nazwisko" required />
-      </div>
-      <br />
-
-      <div>
-        <label for="mail">E-mail:</label>
-        <input type="email" id="mail" required />
-        <strong id="errorMail" hidden> - Wprowadź poprawny adres e-mail!</strong>
-      </div>
-      <br />
-
-      <div>
-        <label for="haslo">Hasło:</label>
-        <input type="password" id="haslo" required />
-        <strong id="errorHaslo" hidden> - Min. 8 znaków, 1 wielka litera, 1 cyfra!</strong>
-      </div>
-      <br />
-
-      <div>
-        <label for="dataUrodzenia">Data urodzenia:</label>
-        <input type="date" id="dataUrodzenia" required />
-      </div>
-      <br />
-
-      <div>
-        <label for="kraj">Kraj:</label>
-        <select id="kraj" required>
-          <option value="" disabled selected>Wybierz kraj...</option>
-        </select>
-      </div>
-      <br />
-
-      <div>
-        <label>Płeć:</label>
-        <input type="radio" id="plecKobieta" name="plec" value="Kobieta" required />
-        <label for="plecKobieta">Kobieta</label>
-
-        <input type="radio" id="plecMezczyzna" name="plec" value="Mężczyzna" />
-        <label for="plecMezczyzna">Mężczyzna</label>
-      </div>
-      <br />
-
-      <div>
-        <button type="submit">Zarejestruj</button>
-      </div>
-
-      <p id="komunikatGlowny"></p>
-    </form>
-
+    </main>
+    <script src="https://kit.fontawesome.com/bedd49e2c8.js" crossorigin="anonymous"></script>
+    <script src="./js/animationsRegister.js"></script>
     <script src="./js/register.js"></script>
+    <script src="./js/darkMode.js"></script>
   </body>
 </html>

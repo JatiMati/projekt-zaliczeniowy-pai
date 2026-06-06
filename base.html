@@ -3,160 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baza Użytkowników</title>
-    <style>
-      /* Główne style z poprzednich stron */
-      body {
-        margin: 0;
-        padding: 30px;
-        background-color: #2b2b2b;
-        font-family: "Courier New", Courier, monospace;
-        color: #333;
-      }
-
-      /* Pasek nawigacyjny na górze */
-      .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 2px solid #4ca36b;
-        padding-bottom: 20px;
-        margin-bottom: 30px;
-      }
-
-      .logo {
-        color: #ffffff;
-        font-size: 2.5rem;
-        letter-spacing: 5px;
-        text-shadow: 2px 2px 0 #000;
-        font-weight: bold;
-        margin: 0;
-      }
-
-      .btn-logout {
-        background-color: #df6e44;
-        color: #ffffff;
-        border: none;
-        padding: 10px 25px;
-        border-radius: 20px;
-        font-family: inherit;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        transition: transform 0.1s ease;
-      }
-
-      .btn-logout:active {
-        transform: translateY(2px);
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Kontener siatki z kafelkami użytkowników */
-      .users-grid {
-        display: grid;
-        /* Automatyczne dopasowanie kolumn: min 300px szerokości, maks ile wlezie */
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
-
-      /* Pojedynczy kafelek (div) użytkownika */
-      .user-card {
-        background-color: #4ca36b;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-
-      .user-card p {
-        margin: 0;
-        background-color: #fcfcf0;
-        padding: 8px 12px;
-        border-radius: 6px;
-        font-size: 0.95rem;
-        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      .user-card strong {
-        color: #2b2b2b;
-      }
-
-      /* Komunikaty stanu */
-      #statusMessage {
-        color: #ffffff;
-        font-size: 1.2rem;
-        text-align: center;
-        margin-top: 50px;
-      }
-    </style>
+    <title>Baza Użytkowników - BAZA</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/styleBaza.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Bitcount+Grid+Double:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <div class="navbar">
-      <h1 class="logo">BAZA</h1>
-      <button class="btn-logout" id="logoutBtn">Wyloguj</button>
-    </div>
+  <body class="text-font-basic tlo-ciemne">
+    <nav>
+      <h1 id="logo" class="bitcount-grid-double-logo">BAZA</h1>
+      <i id="themeToggle" class="fa-solid fa-moon moon"></i>
+    </nav>
 
-    <div id="statusMessage">Pobieranie danych z serwera...</div>
-    <div class="users-grid" id="usersContainer"></div>
+    <main class="prostokat prostokat-baza pressed">
+      <div class="search-bar">
+        <input class="green" type="text" id="searchInput" placeholder="Wyszukaj..." />
+        <button class="orange btn-login text-font-basic" id="searchBtn" type="button">Wyszukwianie</button>
+      </div>
 
-    <script>
-      // 1. Sprawdzenie, czy użytkownik jest zalogowany (opcjonalne, ale zalecane)
-      const zalogowany = localStorage.getItem("zalogowanyUzytkownik");
-      if (!zalogowany) {
-        alert("Brak dostępu! Musisz się zalogować.");
-        window.location.href = "index.html"; // Odsyła do strony logowania
-      }
+      <div class="users-container pressed" id="usersContainer"></div>
+    </main>
 
-      // 2. Obsługa przycisku wylogowywania
-      document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("zalogowanyUzytkownik");
-        window.location.href = "index.html";
-      });
-
-      // 3. Pobieranie bazy danych i generowanie widoku
-      const container = document.getElementById("usersContainer");
-      const statusMessage = document.getElementById("statusMessage");
-      const urlBlob = "https://paijsonmagazyn.blob.core.windows.net/dane-api/users.json";
-
-      fetch(urlBlob)
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Błąd podczas pobierania danych.");
-          }
-          return response.json();
-        })
-        .then((uzytkownicy) => {
-          // Usuwamy komunikat "Pobieranie..."
-          statusMessage.style.display = "none";
-
-          // Przechodzimy przez każdego użytkownika w tablicy
-          uzytkownicy.forEach((user) => {
-            // Tworzymy główny div kafelka
-            const card = document.createElement("div");
-            card.className = "user-card";
-
-            // Budujemy zawartość HTML kafelka (celowo pomijamy 'user.haslo')
-            // Zwróć uwagę na to, by nazwy kluczy idealnie pasowały do JSON-a (wielkość liter ma znaczenie)
-            card.innerHTML = `
-                        <p><strong>Imię:</strong> ${user.Imie}</p>
-                        <p><strong>Nazwisko:</strong> ${user.Nazwisko}</p>
-                        <p><strong>E-mail:</strong> ${user.mail}</p>
-                        <p><strong>Data ur.:</strong> ${user.data_urodzenia}</p>
-                        <p><strong>Płeć:</strong> ${user.Plec}</p>
-                        <p><strong>Kraj:</strong> ${user.Kraj || "Brak danych"}</p>
-                    `;
-
-            // Dodajemy gotowy kafelek do siatki
-            container.appendChild(card);
-          });
-        })
-        .catch((error) => {
-          console.error("Błąd połączenia:", error);
-          statusMessage.textContent = "Nie udało się pobrać listy użytkowników.";
-          statusMessage.style.color = "#df6e44";
-        });
-    </script>
+    <script src="https://kit.fontawesome.com/bedd49e2c8.js" crossorigin="anonymous"></script>
+    <script src="./js/darkMode.js"></script>
+    <script src="./js/animationsBaza.js"></script>
+    <script src="./js/baza.js"></script>
   </body>
 </html>

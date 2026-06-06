@@ -4,32 +4,51 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Formularz Logowania</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&family=Bitcount+Grid+Double:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h1>BAZA</h1>
+  <body class="text-font-basic tlo-ciemne">
+    <nav>
+      <h1 id="logo" class="bitcount-grid-double-logo">BAZA</h1>
+      <i id="themeToggle" class="fa-solid fa-moon moon"></i>
+    </nav>
 
-    <div id="loginForm">
-      <form action="#" method="POST">
-        <div>
-          <label for="login">Login</label>
-          <input type="text" id="login" name="login" />
+    <main class="prostokat prostokat-login pressed">
+      <div id="loginForm">
+        <form action="#" method="POST">
+          <div>
+            <label class="label-login" for="login">Login</label>
+            <input class="green" type="text" id="login" name="login" />
+          </div>
+
+          <div>
+            <label class="label-password" for="haslo">Hasło</label>
+            <input class="green" type="password" id="haslo" name="haslo" />
+          </div>
+
+          <div class="submit-container">
+            <button class="btn-login text-font-basic" type="submit">Login</button>
+          </div>
+        </form>
+
+        <div class="flex-register">
+          <a href="./register.html"><button class="btn-register text-font-basic" type="button">Register</button></a>
         </div>
-
-        <div>
-          <label for="haslo">Haslo</label>
-          <input type="password" id="haslo" name="haslo" />
-        </div>
-
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-
-      <div>
-        <button type="button"><a href="./register.html">Register</a></button>
       </div>
-      <h1 id="komunikat">AA</h1>
-    </div>
-    <script src="./js/login.js"></script>
+      <h1 id="komunikat"></h1>
+    </main>
   </body>
+  <script src="https://kit.fontawesome.com/bedd49e2c8.js" crossorigin="anonymous"></script>
+  <script src="./js/login.js"></script>
+  <script src="./js/animationsLogin.js"></script>
+
+  <script src="./js/darkMode.js"></script>
 </html>
