@@ -33,8 +33,6 @@ fetch(urlBlob)
       const card = document.createElement("div");
       card.className = "user-card";
 
-      // Budujemy zawartość HTML kafelka (celowo pomijamy 'user.haslo')
-      // Zwróć uwagę na to, by nazwy kluczy idealnie pasowały do JSON-a (wielkość liter ma znaczenie)
       card.innerHTML = `
                         <p><strong>Imię:</strong> ${user.Imie}</p>
                         <p><strong>Nazwisko:</strong> ${user.Nazwisko}</p>
@@ -44,7 +42,6 @@ fetch(urlBlob)
                         <p><strong>Kraj:</strong> ${user.Kraj || "Brak danych"}</p>
                     `;
 
-      // Dodajemy gotowy kafelek do siatki
       container.appendChild(card);
     });
   })

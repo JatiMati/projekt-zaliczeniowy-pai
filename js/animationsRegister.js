@@ -26,7 +26,6 @@ wszystkieInputy.forEach((input) => {
 });
 
 // 3. Pobieramy przyciski z pliku register.html
-// Uwaga: "Zarejestruj" ma klasę .btn-login, a "Wróć do logowania" ma .btn-register
 const przyciskSubmit = document.querySelector(".btn-login");
 const przyciskWroc = document.querySelector(".btn-register");
 
@@ -60,7 +59,7 @@ radioInputs.forEach((radio) => {
 
   // Reakcja na zaznaczenie kółeczka (zdarzenie 'change')
   radio.addEventListener("change", (e) => {
-    // KROK A: Najpierw czyścimy CAŁĄ GRUPĘ (np. grupę o nazwie "plec")
+    // Najpierw czyścimy CAŁĄ GRUPĘ (np. grupę o nazwie "plec")
     const nazwaGrupy = e.target.name;
     document.querySelectorAll(`input[type="radio"][name="${nazwaGrupy}"]`).forEach((innyRadio) => {
       innyRadio.classList.remove("pressed");
@@ -68,7 +67,7 @@ radioInputs.forEach((radio) => {
       innyRadio.classList.add("unpressed");
     });
 
-    // KROK B: Skoro cała grupa jest wyczyszczona, nadajemy 'pressed' i kolor klikniętemu
+    //Skoro cała grupa jest wyczyszczona, nadajemy 'pressed' i kolor klikniętemu
     if (e.target.checked) {
       e.target.classList.add("pressed");
       e.target.classList.add("green"); // <--- NOWE: Dodajemy Twój kolor

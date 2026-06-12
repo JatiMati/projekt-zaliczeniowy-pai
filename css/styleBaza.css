@@ -55,8 +55,8 @@
   color: var(--text);
 }
 .prostokat-baza {
-  margin: 100px auto 0 auto; /* Użyj auto z lewej/prawej, żeby wyśrodkować cały blok */
-  width: 90%; /* Zmień ze 100% na 90%, żeby nie "dotykał" krawędzi ekranu */
+  margin: 100px auto 0 auto; 
+  width: 90%; 
   max-width: 1300px;
   min-height: 90vh;
   display: flex;
@@ -64,7 +64,7 @@
   padding: 30px;
   background-color: #eeebe2;
   box-sizing: border-box;
-  border-radius: 20px; /* Dodaj zaokrąglenie, jeśli chcesz */
+  border-radius: 20px;
 }
 
 .prostokat-wewnatrz {
@@ -116,8 +116,8 @@ input::placeholder {
   align-content: start; 
   flex-grow: 1;
   background-color: var(--szary);
-  border-radius: 23px; /* Poprawiłem literówkę z '23x' na '23px' */
-  padding: 20px; /* Zmniejszyłem z 50px */
+  border-radius: 23px;
+  padding: 20px;
   overflow-y: auto;
   width: 100%; 
   box-sizing: border-box;
@@ -125,12 +125,12 @@ input::placeholder {
 
 .user-card {
   width: 100%;
-  background-color: var(--tlo); /* Zmień na tło ciemne, żeby odróżnić od kontenera */
+  background-color: var(--tlo);
   color: var(--text);
-  margin: 0; /* USUNIĘTO margin: 20px - teraz grid i gap zajmą się odstępami */
+  margin: 0;
   padding: 20px;
   border-radius: 15px;
-  box-sizing: border-box; /* Ważne, żeby padding nie wychodził poza kartę */
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -148,4 +148,56 @@ input::placeholder {
 
 .user-card p strong {
   color: rgba(255, 255, 255, 0.6);/
+}
+.logout-link {
+  position: relative;;
+  transform: translate(-50%, -50%);
+  top: 20px;
+  left: 50vw;
+  align-items: center;
+
+}
+
+#logoutBtn{
+  color: var(--text);
+}
+
+
+@media screen and (max-width: 1200px) {
+  .prostokat-baza {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .prostokat-baza {
+    margin-top: 80px;
+    width: 95%;
+    padding: 15px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .search-bar .btn-login {
+    width: 100%;
+  }
+
+  .users-container {
+    grid-template-columns: 1fr;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .user-card {
+    padding: 15px;
+  }
 }

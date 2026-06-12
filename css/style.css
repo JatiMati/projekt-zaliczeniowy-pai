@@ -100,15 +100,13 @@ i {
 }
 
 .prostokat {
-  padding: 40px; /* Odstęp wewnątrz prostokąta, żeby tekst nie dotykał krawędzi */
-  border-radius: 23px; /* Lekkie zaokrąglenie rogów (sprawdź w Figmie, jaką masz tam wartość) */
+  padding: 40px;
+  border-radius: 23px;
 
-  /* Rozmiary */
   width: 100%;
-  max-width: 400px; /* Nie pozwalamy mu się rozciągnąć na całą szerokość ekranu */
+  max-width: 400px;
 }
 
-/* 2. Wygląd Twojego prostokąta */
 .prostokat-login {
   background-color: var(--kolor-drugi);
 }
@@ -117,7 +115,6 @@ i {
   background-color: var(--tlo-na-gorze);
 }
 
-/* 1. Ustawienia dla body, które wyśrodkują zawartość */
 body {
   min-height: 100vh;
   display: grid;
@@ -130,21 +127,17 @@ body {
 
 .pressed {
   box-shadow:
-    /* 2px 2px 2px rgba(255, 255, 255, 0.2), */
     -0.5px -0.5px 1px rgba(0, 0, 0, 0.28),
     inset -3px -3px 2px rgba(255, 255, 255, 0.2),
     inset 3px 3px 4.2px rgba(0, 0, 0, 0.28);
-  /* filter: blur(0.5px); */
   border-radius: 23px;
 }
 
 .unpressed {
   box-shadow:
-    /* 2px 2px 2px rgba(0, 0, 0, 0.28), */
     -0.5px -0.5px 1px rgba(255, 255, 255, 0.2),
     inset -3px -3px 2px rgba(0, 0, 0, 0.28),
     inset 3px 3px 4.2px rgba(255, 255, 255, 0.2);
-  /* filter: blur(0.5px); */
   border-radius: 23px;
 }
 
@@ -158,43 +151,35 @@ form {
   gap: 13px;
 }
 
-/* 2. Pojedynczy blok (Label + Input) */
 form div {
   display: flex;
   justify-content: space-between;
 
-  /* Opcjonalnie: wyrówna tekst etykiety idealnie w pionie względem inputa */
   align-items: center;
   width: 100%;
-  gap: 40px; /* Mniejszy odstęp między napisem "Login" a samym okienkiem */
+  gap: 40px;
 }
 .flex-register {
   display: flex;
 
-  /* Wyrównuje tekst i input idealnie na środku w pionie */
   align-items: center;
-  /* Ważne: kontener musi mieć zdefiniowaną szerokość, żeby miał po czym rozsmarować elementy */
   width: 100%;
-  flex-direction: column; /* Ustawia elementy w pionowej kolumnie */
-  gap: 13px; /* Tworzy równe odstępy między całymi blokami (login, hasło, przycisk) */
+  flex-direction: column;
+  gap: 13px;
 }
 
-/* 3. Wygląd tekstów nad polami */
 label {
   font-size: 14px;
   color: var(--text);
-
-  /* Wyśrodkowanie labela idealnie nad inputem */
   align-self: center;
 }
 
-/* 4. Wygląd pól tekstowych */
 input {
   filter: blur(0.1px);
   border: none;
   padding: 12px 16px;
   border-radius: 23px;
-  font-family: inherit; /* Dziedziczy czcionkę z body */
+  font-family: inherit;
   color: var(--text);
   transition:
     box-shadow 0.3s ease,
@@ -202,12 +187,10 @@ input {
     background-color 0.2s ease;
 }
 
-/* Efekt po kliknięciu w pole tekstowe (Focus) */
 input:focus {
   outline: none;
 }
 
-/* 5. Wygląd przycisków i linku "Register" */
 button {
   padding: 14px;
   border: none;
@@ -215,16 +198,14 @@ button {
   font-weight: 600;
   cursor: pointer;
   text-align: center;
-  text-decoration: none; /* Usuwa podkreślenie z linku */
-  transition: background-color 0.3s ease; /* Płynne przejście koloru */
+  text-decoration: none;
+  transition: background-color 0.3s ease;
   transition:
     box-shadow 0.15s ease,
     transform 0.3s ease,
     background-color 0.2s ease;
 }
 .btn-login {
-  /* Wypycha ten konkretny element do prawej krawędzi */
-
   width: 100px;
   color: var(--text);
   background-color: var(--kolor-drugi);
@@ -252,7 +233,6 @@ a {
   text-decoration: none;
 }
 
-/* Efekt po najechaniu myszką na przycisk */
 .btn-login:hover {
   background-color: var(--kolor-drugi);
   color: var(--kolor-drugi);
@@ -262,11 +242,56 @@ a {
   color: var(--text);
 }
 
-/* Odsunięcie przycisku Register od reszty formularza */
 #loginForm > div:last-of-type {
   margin-top: 16px;
 }
 form .submit-container {
-  /* Nadpisujemy wcześniejsze space-between */
   justify-content: center;
+}
+@media screen and (max-width: 1200px) {
+  #logo {
+    font-size: 56px;
+  }
+
+  .moon {
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #logo {
+    font-size: 36px;
+    top: 2vh;
+    left: 5vw;
+  }
+
+  .moon {
+    font-size: 32px;
+    top: 2vh;
+    right: 5vw;
+  }
+
+  .prostokat {
+    padding: 25px;
+    width: 92%;
+  }
+
+  form div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  input {
+    width: 100%;
+  }
+  .btn-login {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .btn-register {
+    width: 100%;
+    margin-top: 15px;
+  }
 }
